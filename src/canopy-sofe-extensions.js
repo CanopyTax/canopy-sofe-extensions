@@ -4,6 +4,7 @@ const envs = {
 	integ: 'https://cdn-integ.canopy.ninja/sofe-manifest.json',
 	stage: 'https://cdn-stage.canopy.ninja/sofe-manifest.json',
 	prod: 'https://cdn.canopytax.com/sofe-manifest.json',
+	spalpatine: 'https://cdn2.canopytax.com/sofe-manifest.json',
 
 	thing: 'https://app-thing.canopy.ninja/sofe-manifest.json',
 	groot: 'https://app-groot.canopy.ninja/sofe-manifest.json',
