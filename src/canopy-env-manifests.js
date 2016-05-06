@@ -29,7 +29,6 @@ export function resolveUrlFromEnv(name, manifestUrl) {
 					})
 					.catch(reject);
 				} else {
-					console.error(response);
 					reject(`HTTP error retrieving manifest at '${manifestUrl}'`);
 				}
 			})

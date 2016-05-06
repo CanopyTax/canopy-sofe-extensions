@@ -13,14 +13,15 @@ const envs = {
 const originalSystemNormalize = SystemJS.normalize;
 
 SystemJS.normalize = function(name, parentName, parentAddress) {
-	const isSofeService = /sofe(@[0-9a-zA-Z\-\.]+)?\.js$/;
+	const isSofeService = /!sofe$/;
 
 	if (isSofeService.test(name)) {
-		localStorageOverride = localStorage.getItem(`sofe:${name}`);
+		const serviceName = name.slice(0, name.length - '!sofe'.length);
+		const localStorageOverride = localStorage.getItem(`sofe:${serviceName}`);
 		const manifestUrl = envs[localStorageOverride];
 
 		if (manifestUrl) {
-			return resolveUrlFromEnv(name.slice(0, name.lastIndexOf('!')), manifestUrl);
+			return resolveUrlFromEnv(serviceName, manifestUrl);
 		}
 	}
 
