@@ -17,7 +17,7 @@ SystemJS.normalize = function(name, parentName, parentAddress) {
 	const isSofeService = /!sofe/;
 
 	if (isSofeService.test(name)) {
-		const serviceName = name.slice(0, name.length - '!sofe'.length);
+		const serviceName = name.slice(0, name.lastIndexOf('!'));
 		const localStorageOverride = localStorage.getItem(`sofe:${serviceName}`);
 		const manifestUrl = envs[localStorageOverride];
 
