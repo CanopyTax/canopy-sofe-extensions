@@ -14,7 +14,7 @@ const envs = {
 const originalSystemNormalize = SystemJS.normalize;
 
 SystemJS.normalize = function(name, parentName, parentAddress) {
-	const isSofeService = /!sofe$/;
+	const isSofeService = /!sofe/;
 
 	if (isSofeService.test(name)) {
 		const serviceName = name.slice(0, name.length - '!sofe'.length);
