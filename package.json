@@ -19,7 +19,7 @@
     "format": "esm",
     "main": "src/canopy-sofe-extensions.js",
     "dependencies": {
-      "sofe": "sofe"
+      "sofe": "^1.4.0"
     }
   },
   "publishConfig": {
