@@ -1,6 +1,6 @@
 {
   "name": "canopy-sofe-extensions",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "",
   "main": "lib/canopy-sofe-extensions.js",
   "scripts": {
