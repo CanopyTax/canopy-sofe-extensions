@@ -4,6 +4,7 @@ rm -rf lib
 
 ./node_modules/jspm/jspm.js build \
 	canopy-sofe-extensions \
+	- *!sofe \
 	- sofe \
 	lib/canopy-sofe-extensions.js \
 	--format amd \
