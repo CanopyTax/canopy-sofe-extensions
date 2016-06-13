@@ -5,6 +5,7 @@
   "main": "lib/canopy-sofe-extensions.js",
   "scripts": {
     "build": "./bin/build-code",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
