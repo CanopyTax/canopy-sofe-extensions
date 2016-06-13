@@ -34,6 +34,8 @@ const canopyMiddleware = () => (preLocateLoad, preLocateNext) => {
 				.catch(ex => {
 					throw ex;
 				});
+			} else if (localStorageValue === 'stage') {
+				throw new Error(`'stage' is not a valid canopy sofe extensions value. Do you mean 'cdn-stage'? Or maybe 'app-stage'?`);
 			} else {
 				postLocateNext(postLocateLoad);
 			}
