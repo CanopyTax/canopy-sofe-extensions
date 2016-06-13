@@ -1,4 +1,4 @@
-import { applyMiddleware, getManifest, getServiceName, getAllManifests } from 'sofe';
+import { applyMiddleware, getManifest, getServiceName } from 'sofe';
 import { generalToast } from 'toast-service!sofe';
 
 const envs = {
@@ -30,7 +30,7 @@ const canopyMiddleware = () => (preLocateLoad, preLocateNext) => {
 						postLocateNext(manifest[serviceName]);
 					} else {
 						generalToast(`Improper usage of sofe inspector - cannot find sofe service '${serviceName}' at the sofe manifest for '${localStorageValue}'`, `I apologize for trying`);
-						fallbackToDefault(postLocateLoad, postLocateNext, serviceName);
+						postLocateNext(postLocateLoad);
 					}
 				})
 				.catch(ex => {
@@ -38,7 +38,7 @@ const canopyMiddleware = () => (preLocateLoad, preLocateNext) => {
 				});
 			} else if (localStorageValue === 'stage') {
 				generalToast(`Improper usage of sofe inspector - 'stage' is not a valid canopy sofe extensions value. Do you mean 'cdn-stage'? Or maybe 'app-stage'?`, `I apologize for trying`);
-				fallbackToDefault(postLocateLoad, postLocateNext, serviceName);
+				postLocateNext(postLocateLoad);
 			} else {
 				postLocateNext(postLocateLoad);
 			}
@@ -50,11 +50,3 @@ const canopyMiddleware = () => (preLocateLoad, preLocateNext) => {
 }
 
 applyMiddleware(canopyMiddleware);
-
-function fallbackToDefault(load, next, serviceName) {
-	getAllManifests()
-	.then(manifests => {
-		next(manifests.manifest[serviceName]);
-	})
-	.catch(ex => {throw ex});
-}
