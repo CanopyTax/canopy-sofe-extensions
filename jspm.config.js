@@ -7,21 +7,20 @@ SystemJS.config({
   browserConfig: {
     "baseURL": "/"
   },
-  devConfig: {
-    "map": {
-      "plugin-babel": "npm:systemjs-plugin-babel@0.0.12"
-    }
-  },
   transpiler: "plugin-babel",
   packages: {
     "canopy-sofe-extensions": {
       "main": "canopy-sofe-extensions.js",
+      "format": "amd",
       "meta": {
         "*.js": {
           "loader": "plugin-babel"
         }
       }
     }
+  },
+  map: {
+    "plugin-babel": "npm:systemjs-plugin-babel@0.0.12"
   }
 });
 
