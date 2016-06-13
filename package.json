@@ -2,7 +2,9 @@
   "name": "canopy-sofe-extensions",
   "version": "2.0.3",
   "description": "",
+  "main": "lib/canopy-sofe-extensions.js",
   "scripts": {
+    "build": "./bin/build-code",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,14 +17,23 @@
     "url": "https://github.com/CanopyTax/canopy-sofe-extensions/issues"
   },
   "homepage": "https://github.com/CanopyTax/canopy-sofe-extensions#readme",
-  "jspm": {
-    "format": "esm",
-    "main": "src/canopy-sofe-extensions.js",
-    "dependencies": {
-      "sofe": "^1.4.0"
-    }
-  },
   "publishConfig": {
     "registry": "http://npm.canopytax.com"
+  },
+  "devDependencies": {
+    "jspm": "^0.17.0-beta.21"
+  },
+  "jspm": {
+    "name": "canopy-sofe-extensions",
+    "main": "canopy-sofe-extensions.js",
+    "dependencies": {
+      "sofe": "npm:sofe@^1.4.1"
+    },
+    "devDependencies": {
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.12"
+    },
+    "peerDependencies": {
+      "process": "github:jspm/nodelibs-process@^0.2.0-alpha"
+    }
   }
 }

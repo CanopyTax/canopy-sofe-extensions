@@ -1,0 +1,8 @@
+#!/bin/bash -e
+
+./node_modules/jspm/jspm.js build \
+	canopy-sofe-extensions \
+	- sofe \
+	lib/canopy-sofe-extensions.js \
+	--format amd \
+	"$@"
