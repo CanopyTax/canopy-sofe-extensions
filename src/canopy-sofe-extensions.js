@@ -13,6 +13,8 @@ const envs = {
 	'app-stage': 'https://app-stage.canopy.ninja/sofe-manifest.json',
 };
 
+const localRegex = /^[0-9][0-9][0-9][0-9]$/
+
 const canopyMiddleware = () => (preLocateLoad, preLocateNext) => {
 	const serviceName = getServiceName(preLocateLoad);
 
@@ -34,6 +36,8 @@ const canopyMiddleware = () => (preLocateLoad, preLocateNext) => {
 				.catch(ex => {
 					throw ex;
 				});
+			} else if (localRegex.test(localStorageValue)) {
+				postLocateNext(`https://localhost:${localStorageValue}/${serviceName}.js`);
 			} else {
 				postLocateNext(postLocateLoad);
 			}
