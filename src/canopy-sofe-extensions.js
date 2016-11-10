@@ -2,15 +2,20 @@ import { applyMiddleware, getManifest, getServiceName } from 'sofe';
 
 const envs = {
 	integ: 'https://cdn-integ.canopy.ninja/sofe-manifest.json',
+	'cdn-integ': 'https://cdn-integ.canopy.ninja/sofe-manifest.json',
 	'cdn-stage': 'https://cdn-stage.canopy.ninja/sofe-manifest.json',
 	prod: 'https://cdn.canopytax.com/sofe-manifest.json',
 	spalpatine: 'https://cdn2.canopytax.com/sofe-manifest.json',
 
 	thing: 'https://app-thing.canopy.ninja/sofe-manifest.json',
+	'app-thing': 'https://app-thing.canopy.ninja/sofe-manifest.json',
 	groot: 'https://app-groot.canopy.ninja/sofe-manifest.json',
+	'app-groot': 'https://app-groot.canopy.ninja/sofe-manifest.json',
 	thanos: 'https://app-thanos.canopy.ninja/sofe-manifest.json',
+	'app-thanos': 'https://app-thanos.canopy.ninja/sofe-manifest.json',
 	beta: 'https://app-beta.canopy.ninja/sofe-manifest.json',
-	'app-stage': 'https://app-stage.canopy.ninja/sofe-manifest.json',
+	'app-beta': 'https://app-beta.canopy.ninja/sofe-manifest.json',
+	'app-stage': 'https://app-stage.canopy.ninja/sofe-manifest.json'
 };
 
 const localRegex = /^[0-9][0-9][0-9][0-9]$/
@@ -38,11 +43,13 @@ const canopyMiddleware = () => (preLocateLoad, preLocateNext) => {
 				});
 			} else if (localRegex.test(localStorageValue)) {
 				postLocateNext(`https://localhost:${localStorageValue}/${serviceName}.js`);
+			} else if (localStorageValue === 'stage') {
+				throw new Error(`'stage' is not a valid override for sofe services. Please change your sofe override for '${serviceName}' to be either 'app-stage' or 'cdn-stage'`);
 			} else {
 				postLocateNext(postLocateLoad);
 			}
 		} else {
-			console.warn(`canopy-sofe-extensions not working properly (overrides to "stage", "thanos", etc) because sofe's getServiceName function returned something falsy for`, preLocateLoad);
+			console.warn(`canopy-sofe-extensions not working properly (overrides to "cdn-stage", "thanos", etc) because sofe's getServiceName function returned something falsy for`, preLocateLoad);
 			postLocateNext(postLocateLoad);
 		}
 	}
