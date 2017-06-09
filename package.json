@@ -4,7 +4,8 @@
   "description": "",
   "main": "lib/canopy-sofe-extensions.js",
   "scripts": {
-    "build": "./bin/build-code",
+    "build": "webpack --config webpack.config.js",
+    "watch": "webpack --config webpack.config.js -w",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,6 +20,11 @@
   },
   "homepage": "https://github.com/CanopyTax/canopy-sofe-extensions#readme",
   "devDependencies": {
-    "jspm": "^0.17.0-beta.32"
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.16",
+    "webpack": "^2.6.1",
+    "webpack-bundle-analyzer": "^2.8.2"
   }
 }
