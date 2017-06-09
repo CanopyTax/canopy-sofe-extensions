@@ -6,7 +6,7 @@ module.exports = {
 	entry: __dirname + '/src/canopy-sofe-extensions.js',
 	output: {
 		filename: 'canopy-sofe-extensions.js',
-		libraryTarget: 'amd',
+		// libraryTarget: 'amd',
 		path: __dirname + '/lib',
 	},
 	module: {
