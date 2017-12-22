@@ -20,6 +20,7 @@ SystemJS.import('sofe').then(sofe => {
 	};
 
 	const localRegex = /^[0-9][0-9][0-9][0-9]$/
+  const localDomain = localStorage.getItem('sofe:local-domain') || 'https://localhost';
 
 	const canopyMiddleware = () => (preLocateLoad, preLocateNext) => {
 		const serviceName = getServiceName(preLocateLoad);
@@ -43,7 +44,7 @@ SystemJS.import('sofe').then(sofe => {
 						throw ex;
 					});
 				} else if (localRegex.test(localStorageValue)) {
-					postLocateNext(`https://localhost:${localStorageValue}/${serviceName}.js`);
+					postLocateNext(`localDomain:${localStorageValue}/${serviceName}.js`);
 				} else if (localStorageValue === 'stage') {
 					throw new Error(`'stage' is not a valid override for sofe services. Please change your sofe override for '${serviceName}' to be either 'app-stage' or 'cdn-stage'`);
 				} else {
