@@ -34,7 +34,7 @@ const canopyMiddleware = () => (preLocateLoad, preLocateNext) => {
           throw ex;
         });
       } else if (localRegex.test(localStorageValue)) {
-        postLocateNext(`https://${localDomain}:${localStorageValue}/${serviceName}.js`);
+        postLocateNext(`${localDomain}:${localStorageValue}/${serviceName}.js`);
       } else if (localStorageValue === 'stage') {
         throw new Error(`'stage' is not a valid override for sofe services. Please change your sofe override for '${serviceName}' to be either 'app-stage' or 'cdn-stage'`);
       } else {
