@@ -3,10 +3,12 @@
   "version": "2.2.1",
   "description": "",
   "main": "lib/canopy-sofe-extensions.js",
+  "browserslist": [
+    "extends browserslist-config-canopy"
+  ],
   "scripts": {
-    "build": "webpack --config webpack.config.js",
-    "watch": "webpack --config webpack.config.js -w",
-    "prepublish": "npm run build",
+    "build": "babel src --out-dir lib --source-maps",
+    "prepublish": "yarn build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,12 +22,9 @@
   },
   "homepage": "https://github.com/CanopyTax/canopy-sofe-extensions#readme",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.0.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-1": "^6.24.1",
-    "clean-webpack-plugin": "^0.1.16",
-    "webpack": "^2.6.1",
-    "webpack-bundle-analyzer": "^2.8.2"
+    "@babel/cli": "^7.0.0-beta.51",
+    "@babel/core": "^7.0.0-beta.51",
+    "@babel/preset-env": "^7.0.0-beta.51",
+    "browserslist-config-canopy": "^1.0.0"
   }
 }
