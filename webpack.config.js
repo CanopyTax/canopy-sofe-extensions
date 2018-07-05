@@ -27,7 +27,7 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin(['lib']),
 	],
-	// devtool: 'source-map',
+	devtool: 'source-map',
 	externals: [
 		/^sofe$/,
 	],
