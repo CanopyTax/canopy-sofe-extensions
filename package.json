@@ -1,13 +1,14 @@
 {
   "name": "canopy-sofe-extensions",
-  "version": "2.1.1",
+  "version": "2.2.1",
   "description": "",
   "main": "lib/canopy-sofe-extensions.js",
   "browserslist": [
     "extends browserslist-config-canopy"
   ],
   "scripts": {
-    "build": "babel src --out-dir lib --source-maps",
+    "build": "webpack --config webpack.config.js",
+    "watch": "webpack --config webpack.config.js -w",
     "prepublish": "yarn build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
