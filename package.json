@@ -9,6 +9,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "watch": "webpack --config webpack.config.js -w",
+    "analyze": "webpack --config webpack.config.analyze.js",
     "prepublish": "yarn build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,6 +27,11 @@
     "@babel/cli": "^7.0.0-beta.51",
     "@babel/core": "^7.0.0-beta.51",
     "@babel/preset-env": "^7.0.0-beta.51",
-    "browserslist-config-canopy": "^1.0.0"
+    "babel-loader": "^8.0.0-beta.4",
+    "browserslist-config-canopy": "^1.0.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "webpack": "^4.15.1",
+    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-cli": "^3.0.8"
   }
 }
